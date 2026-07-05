@@ -1,0 +1,146 @@
+import Link from "next/link";
+import { ShieldCheck, Star } from "lucide-react";
+import { INDIVIDUAL_PLAN, FACILITY_PLAN } from "@/lib/pricing";
+import { PROVIDER_FAQS } from "@/lib/faq";
+import FaqSection from "@/components/FaqSection";
+import PricingComparisonTable, { ComparisonRow } from "@/components/PricingComparisonTable";
+
+export const metadata = {
+  title: "For Providers — Get Found by More Clients",
+  description:
+    "Create your free professional profile on InCareList, or upgrade to Premium to unlock your full profile, a Verified badge, and featured placement in search.",
+};
+
+const ROWS: ComparisonRow[] = [
+  { feature: "Business or provider name shown", free: true, premium: true },
+  { feature: "Address & phone number shown", free: true, premium: true },
+  { feature: "Category shown", free: true, premium: true },
+  { feature: "Claim and manage your profile", free: true, premium: true },
+  { feature: "Appears in search & category browsing", free: true, premium: true },
+  { feature: "Website link", free: false, premium: true },
+  { feature: "Logo", free: false, premium: true },
+  { feature: "Photos & portfolio gallery", free: false, premium: true },
+  { feature: "Full description", free: false, premium: true },
+  { feature: "Services offered", free: false, premium: true },
+  { feature: "Insurance accepted shown on profile", free: false, premium: true },
+  { feature: "Hours of operation", free: false, premium: true },
+  { feature: "Contact form", free: false, premium: true },
+  { feature: "Social media links", free: false, premium: true },
+  { feature: "Featured placement in search results", free: false, premium: true },
+  { feature: "SEO-optimized profile", free: false, premium: true },
+  { feature: "Verified Provider badge", free: false, premium: true },
+  { feature: "Google Maps integration", free: false, premium: true },
+  { feature: "Additional contact information", free: false, premium: true },
+  { feature: "Unlimited profile edits", free: false, premium: true },
+];
+
+export default function ForProvidersPage() {
+  return (
+    <div className="container-page py-16">
+      <div className="max-w-2xl">
+        <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-600 mb-2">
+          For Providers
+        </p>
+        <h1 className="font-display text-4xl font-semibold text-ink leading-tight">
+          Get found by people who need you
+        </h1>
+        <p className="mt-4 text-ink/70">
+          Every profile starts free — business name, address, phone number,
+          and category, visible right away. Claim it to keep it accurate, or
+          upgrade to Premium to unlock the rest of your profile and get
+          found first. Pricing depends on the kind of profile you run.
+        </p>
+      </div>
+
+      {/* Two pricing cards side by side */}
+      <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
+        {/* Individual practitioners */}
+        <div className="flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-ink p-8">
+          <div>
+            <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-200 mb-2">
+              Individual Providers
+            </p>
+            <p className="text-sm text-white/50 mb-3">{INDIVIDUAL_PLAN.appliesTo}</p>
+            <p className="font-display text-3xl font-semibold text-white">
+              ${INDIVIDUAL_PLAN.priceAnnual}
+              <span className="text-base font-normal text-white/60">/year</span>
+            </p>
+            <p className="mt-1 text-sm text-white/60 max-w-sm">{INDIVIDUAL_PLAN.tagline}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/claim"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+              Claim free profile
+            </Link>
+            <a
+              href={INDIVIDUAL_PLAN.stripePaymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors"
+            >
+              <Star className="h-4 w-4" aria-hidden="true" />
+              Get Premium — ${INDIVIDUAL_PLAN.priceAnnual}/year
+            </a>
+          </div>
+        </div>
+
+        {/* Facilities & institutions */}
+        <div className="flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-ink p-8">
+          <div>
+            <p className="font-body text-sm font-semibold uppercase tracking-widest text-teal-300 mb-2">
+              Facilities & Institutions
+            </p>
+            <p className="text-sm text-white/50 mb-3">{FACILITY_PLAN.appliesTo}</p>
+            <p className="font-display text-3xl font-semibold text-white">
+              ${FACILITY_PLAN.priceAnnual}
+              <span className="text-base font-normal text-white/60">/year</span>
+            </p>
+            <p className="mt-1 text-sm text-white/60 max-w-sm">{FACILITY_PLAN.tagline}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/claim"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              <ShieldCheck className="h-4 w-4" aria-hidden="true" />
+              Claim free profile
+            </Link>
+            <a
+              href={FACILITY_PLAN.stripePaymentLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600 transition-colors"
+            >
+              <Star className="h-4 w-4" aria-hidden="true" />
+              Get Premium — ${FACILITY_PLAN.priceAnnual}/year
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <p className="mt-6 text-sm text-ink/50 max-w-2xl">
+        Checkout is secure and handled by Stripe. After payment, our team
+        activates your Premium features — typically within 1 business day.
+        If you haven't claimed your free profile yet, do that first (or
+        right after paying) so we know which listing to upgrade.
+      </p>
+
+      <h2 className="mt-14 font-display text-2xl font-semibold text-ink">Free vs. Premium</h2>
+      <p className="mt-2 text-ink/60 max-w-2xl">
+        The feature set is identical either way — Premium unlocks the same
+        things whether you're an individual practitioner or a facility.
+        Only the price is different.
+      </p>
+      <div className="mt-4 max-w-3xl">
+        <PricingComparisonTable rows={ROWS} premiumLabel="Premium" />
+      </div>
+
+      <div className="mt-14">
+        <FaqSection items={PROVIDER_FAQS} />
+      </div>
+    </div>
+  );
+}

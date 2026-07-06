@@ -180,9 +180,9 @@ export default async function ProviderPage({
             ) : (
               <div className="mt-8 rounded-2xl border border-dashed border-line bg-mist p-6">
                 <p className="text-sm text-ink/70">
-                  Services offered, insurance accepted, photos, and a full
-                  description become visible once this profile is claimed
-                  and upgraded to Premium.
+                  Services offered, insurance accepted, photos, website, social
+                  media links, and a full description become visible once this
+                  profile is claimed and upgraded to Premium.
                 </p>
               </div>
             )}
@@ -198,7 +198,7 @@ export default async function ProviderPage({
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   {provider.phone}
                 </a>
-                {provider.website && (
+                {provider.isPremium && provider.website && (
                   <a href={provider.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-ink/80 hover:text-navy-600">
                     <Globe className="h-4 w-4" aria-hidden="true" />
                     Visit website
@@ -212,7 +212,7 @@ export default async function ProviderPage({
                 )}
               </div>
 
-              {provider.socialLinks && (
+              {provider.isPremium && provider.socialLinks && (
                 <div className="mt-4 flex gap-3">
                   {provider.socialLinks.facebook && (
                     <a href={provider.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="text-ink/50 hover:text-navy-600">

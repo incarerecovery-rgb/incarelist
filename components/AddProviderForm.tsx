@@ -19,11 +19,27 @@ export default function AddProviderForm() {
 
   if (result?.ok) {
     return (
-      <div className="rounded-2xl border border-line bg-navy-50 p-6 flex gap-3">
-        <CheckCircle2 className="h-5 w-5 shrink-0 text-navy-600 mt-0.5" aria-hidden="true" />
-        <div>
-          <p className="font-semibold text-ink">Submitted for review</p>
-          <p className="mt-1 text-sm text-ink/70">{result.message}</p>
+      <div className="space-y-4">
+        <div className="rounded-2xl border border-line bg-navy-50 p-6 flex gap-3">
+          <CheckCircle2 className="h-5 w-5 shrink-0 text-navy-600 mt-0.5" aria-hidden="true" />
+          <div>
+            <p className="font-semibold text-ink">Submitted for review</p>
+            <p className="mt-1 text-sm text-ink/70">{result.message}</p>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-line bg-mist p-6">
+          <p className="font-semibold text-ink">Want more than a basic listing?</p>
+          <p className="mt-1 text-sm text-ink/70">
+            Premium adds your website, photos, a full description, and
+            featured placement in search results — starting at $45/year.
+          </p>
+          <a
+            href="/for-providers"
+            className="mt-3 inline-flex text-sm font-semibold text-orange-600 hover:text-orange-700"
+          >
+            See Premium plans →
+          </a>
         </div>
       </div>
     );
@@ -72,7 +88,12 @@ export default function AddProviderForm() {
         <Field id="address" label="Street address" required />
         <Field id="zip" label="ZIP code" required />
         <Field id="phone" label="Phone number" type="tel" required />
-        <Field id="website" label="Website (optional)" type="text" placeholder="e.g. mybusiness.com" />
+        <div>
+          <Field id="website" label="Website (optional)" type="text" placeholder="e.g. mybusiness.com" />
+          <p className="mt-1.5 text-xs text-ink/50">
+            We'll save this now — it'll show on your public profile once you upgrade to Premium.
+          </p>
+        </div>
         <div>
           <label htmlFor="description" className="block text-sm font-medium text-ink mb-1.5">
             Description (optional)

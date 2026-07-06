@@ -22,7 +22,56 @@ export default async function BrowsePage({
   const categorySlug = params.category?.trim() ?? "";
   const featuredOnly = params.featured === "true";
   const page = Math.max(1, parseInt(params.page ?? "1", 10) || 1);
-  const hasSearch = Boolean(q || stateSlug || categorySlug || featuredOnly);
+  const hasSearch = Boolean(q || stateSlug || featuredOnly);
+  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
+
+  // A category alone (e.g. clicking "Assisted Living Facilities" from the
+  // category grid) isn't narrow enough to dump straight to results once a
+  // category can have thousands of matches — ask for a state or name first,
+  // but keep the category context so it isn't lost.
+  if (categorySlug && !hasSearch) {
+    return (
+      <div className="container-page py-20">
+        <div className="mx-auto max-w-lg text-center">
+          <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-navy-50 text-navy-600 mb-4">
+            <Search className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <h1 className="font-display text-2xl font-semibold text-ink mb-2">
+            {category?.name ?? "Providers"}
+          </h1>
+          <p className="text-ink/60 mb-6">
+            Choose a state to see {category?.name?.toLowerCase() ?? "providers"} near you,
+            or search by name, city, or zip code.
+          </p>
+          <form action="/browse" className="flex flex-col gap-2 sm:flex-row">
+            <input type="hidden" name="category" value={categorySlug} />
+            <select
+              name="state"
+              defaultValue=""
+              className="rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink focus:outline-none focus:border-navy-400 sm:w-40"
+            >
+              <option value="">Choose a state</option>
+              {US_STATES.map((s) => (
+                <option key={s.slug} value={s.slug}>{s.name}</option>
+              ))}
+            </select>
+            <input
+              type="text"
+              name="q"
+              placeholder="Provider name, city, or zip code"
+              className="flex-1 rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:border-navy-400"
+            />
+            <button
+              type="submit"
+              className="rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   if (!hasSearch) {
     return (
@@ -35,7 +84,7 @@ export default async function BrowsePage({
             Search to find a provider
           </h1>
           <p className="text-ink/60 mb-6">
-            Choose a state and category, or search by provider or business name.
+            Choose a state and category, or search by name, city, or zip code.
           </p>
           <form action="/browse" className="flex flex-col gap-2 sm:flex-row">
             <select
@@ -51,7 +100,7 @@ export default async function BrowsePage({
             <input
               type="text"
               name="q"
-              placeholder="Provider or business name"
+              placeholder="Provider name, city, or zip code"
               className="flex-1 rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:border-navy-400"
             />
             <button
@@ -74,7 +123,6 @@ export default async function BrowsePage({
     page,
   });
 
-  const category = categorySlug ? getCategoryBySlug(categorySlug) : undefined;
   const stateName = stateSlug ? US_STATES.find((s) => s.slug === stateSlug)?.name : undefined;
 
   const headingParts = [category?.name, stateName ? `in ${stateName}` : undefined].filter(Boolean);

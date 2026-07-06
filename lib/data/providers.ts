@@ -155,6 +155,7 @@ export async function searchProviders(params: ProviderSearchParams): Promise<Pro
         return (
           p.name.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
+          p.address.toLowerCase().includes(q) ||
           p.zip.includes(q)
         );
       })
@@ -197,7 +198,7 @@ export async function searchProviders(params: ProviderSearchParams): Promise<Pro
     // filter syntax, so a search term can't accidentally break the query.
     const safeQuery = params.query.replace(/[,()]/g, "").trim();
     if (safeQuery) {
-      query = query.or(`name.ilike.%${safeQuery}%,zip.ilike.%${safeQuery}%`);
+      query = query.or(`name.ilike.%${safeQuery}%,zip.ilike.%${safeQuery}%,address.ilike.%${safeQuery}%`);
     }
   }
 

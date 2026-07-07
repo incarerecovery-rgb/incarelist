@@ -1,9 +1,12 @@
 import type { MetadataRoute } from "next";
 import { getAllProviderPaths } from "@/lib/data/providers";
 import { GUIDES } from "@/lib/guides";
-import { ACTIVE_STATE_SLUGS } from "@/lib/us-states";
 
 const BASE_URL = "https://incarelist.com";
+
+// States where we currently have real, live provider data. Update this
+// list as more states get populated with data.
+const ACTIVE_STATE_SLUGS = ["california"];
 
 // Categories are stored in the database, not a static file — mirroring the
 // slugs used across the site so category browse pages are included without

@@ -72,6 +72,7 @@ export async function approveSubmission(submissionId: string) {
 
   revalidatePath("/admin/submissions");
   revalidatePath("/", "layout");
+  revalidatePath("/sitemap.xml");
 }
 
 export async function rejectSubmission(submissionId: string) {

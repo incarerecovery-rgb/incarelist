@@ -4,13 +4,8 @@ import { GUIDES } from "@/lib/guides";
 
 const BASE_URL = "https://incarelist.com";
 
-// States where we currently have real, live provider data. Update this
-// list as more states get populated with data.
 const ACTIVE_STATE_SLUGS = ["california"];
 
-// Categories are stored in the database, not a static file — mirroring the
-// slugs used across the site so category browse pages are included without
-// a network call at sitemap-build time.
 const CATEGORY_SLUGS = [
   "therapists",
   "psychologists",
@@ -55,13 +50,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  // Category + state combo pages (only for states with real data today —
-  // grows automatically as ACTIVE_STATE_SLUGS grows).
   const categoryStatePages: MetadataRoute.Sitemap = [];
   for (const stateSlug of ACTIVE_STATE_SLUGS) {
     for (const categorySlug of CATEGORY_SLUGS) {
       categoryStatePages.push({
-        url: `${BASE_URL}/browse?category=${categorySlug}&state=${stateSlug}`,
+        url: `${BASE_URL}/browse?category=${categorySlug}&amp;state=${stateSlug}`,
         lastModified: now,
         changeFrequency: "weekly",
         priority: 0.7,

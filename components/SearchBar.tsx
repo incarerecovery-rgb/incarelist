@@ -7,7 +7,7 @@ import { US_STATES } from "@/lib/us-states";
 import { CATEGORIES } from "@/lib/types";
 
 export default function SearchBar() {
-  const [state, setState] = useState("");
+  const [state, setState] = useState("california");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const router = useRouter();
@@ -44,7 +44,7 @@ export default function SearchBar() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Provider name, business name…"
+          placeholder="Try &quot;provider name&quot; or &quot;near 90210&quot;"
           aria-label="Search by provider or business name"
           className="w-full bg-transparent py-1 text-base text-ink placeholder:text-ink/40 focus:outline-none"
         />

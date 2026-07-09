@@ -15,15 +15,15 @@ export default function ForProvidersTeaser() {
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-600 mb-2">
-              For Providers
+              Are you a therapist or care provider?
             </p>
             <h2 className="font-display text-3xl font-semibold text-ink max-w-md">
-              Are you a provider? Get found by more clients.
+              Is your practice listed? Claim it free in 2 minutes.
             </h2>
             <p className="mt-4 text-ink/70 max-w-md">
-              Every provider starts with a free profile. Upgrade to Premium
-              to unlock your full profile, a Verified badge, and featured
-              placement in search.
+              Then get the Verified Provider badge families trust — plus
+              your website, photos, and featured placement in search
+              results.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link

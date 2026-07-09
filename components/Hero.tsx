@@ -26,25 +26,27 @@ export default function Hero() {
 
       <div className="container-page relative py-20 sm:py-28">
         <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-600 mb-4">
-          America's Behavioral Health &amp; Care Directory
+          California's Care Directory
         </p>
         <h1 className="font-display text-4xl sm:text-6xl font-semibold text-ink leading-[1.05] max-w-3xl">
           Find the right care, without the guesswork.
         </h1>
-        <p className="mt-5 text-lg text-ink/70 max-w-xl">
-          Search therapists, treatment centers, senior living communities,
-          and home care providers across the United States — by name,
-          business, or category.
+        <p className="mt-3 text-lg font-medium text-navy-700 max-w-xl">
+          Find care you can trust — verified, local, real.
+        </p>
+        <p className="mt-3 text-lg text-ink/70 max-w-xl">
+          Search 18,000+ California providers by name, city, or category —
+          no guesswork, no outdated listings.
         </p>
 
-        <div className="mt-10">
+        <div className="mt-10 rounded-2xl bg-navy-50/60 p-3 shadow-lg shadow-navy-900/5 ring-1 ring-navy-100">
           <SearchBar />
         </div>
 
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/60">
           <span>All care categories covered</span>
           <span className="text-navy-300">·</span>
-          <span>Every U.S. state</span>
+          <span>California, expanding soon</span>
           <span className="text-navy-300">·</span>
           <span>No cost to search</span>
           <span className="text-navy-300">·</span>

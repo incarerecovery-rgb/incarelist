@@ -46,10 +46,26 @@ export default function ForProvidersPage() {
           The free directory for therapists and care facilities
         </h1>
         <p className="mt-4 text-ink/70">
-          Search to see if you're already listed, then claim or add your
-          profile — free, in minutes. Therapists, treatment centers, senior
-          living, home care, and more. Want to stand out? Go Premium
-          anytime.
+          InCareList is completely free to join. Most California{" "}
+          <Link href="/browse?category=assisted-living-facilities&state=california" className="underline decoration-navy-300 underline-offset-2 hover:text-navy-700">
+            assisted living facilities
+          </Link>
+          ,{" "}
+          <Link href="/browse?category=detox-centers&state=california" className="underline decoration-navy-300 underline-offset-2 hover:text-navy-700">
+            detox centers
+          </Link>
+          ,{" "}
+          <Link href="/browse?category=substance-use-treatment-centers&state=california" className="underline decoration-navy-300 underline-offset-2 hover:text-navy-700">
+            substance use treatment centers
+          </Link>
+          ,{" "}
+          <Link href="/browse?category=therapists&state=california" className="underline decoration-navy-300 underline-offset-2 hover:text-navy-700">
+            therapists
+          </Link>
+          , and more already have a basic profile built from public
+          licensing records. Search below to see if yours is already
+          there — claim it free in minutes. Not listed yet? Add your
+          profile yourself, also free.
         </p>
       </div>
 
@@ -83,9 +99,19 @@ export default function ForProvidersPage() {
         </div>
       </div>
 
-      <p className="mt-10 font-display text-xl font-semibold text-ink max-w-2xl">
-        Already listed or just added yours? Go Premium to stand out.
-      </p>
+      <div className="mt-10 max-w-2xl">
+        <p className="font-display text-xl font-semibold text-ink">
+          Already listed or just added yours? Go Premium to stand out.
+        </p>
+        <p className="mt-3 text-ink/70">
+          A free listing shows your name, address, and category — enough
+          to be found. A Premium profile is built to actually rank: your
+          own page with your real name, services, and photos, optimized
+          so it shows up when families search on Google for care in your
+          area. Add your website link, upload photos, and get featured
+          placement in InCareList's own search results too.
+        </p>
+      </div>
 
       {/* Two pricing cards side by side */}
       <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">

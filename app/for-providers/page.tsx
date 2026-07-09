@@ -4,6 +4,7 @@ import { INDIVIDUAL_PLAN, FACILITY_PLAN } from "@/lib/pricing";
 import { PROVIDER_FAQS } from "@/lib/faq";
 import FaqSection from "@/components/FaqSection";
 import PricingComparisonTable, { ComparisonRow } from "@/components/PricingComparisonTable";
+import SearchBar from "@/components/SearchBar";
 
 export const metadata = {
   title: "For Providers — Get Found by More Clients",
@@ -71,6 +72,20 @@ export default function ForProvidersPage() {
           Manage your listing anytime
         </div>
       </div>
+
+      {/* Free action: find or add your listing right now */}
+      <div className="mt-10 max-w-3xl">
+        <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-600 mb-3">
+          Find your listing
+        </p>
+        <div className="rounded-2xl bg-navy-50/60 p-3 shadow-lg shadow-navy-900/5 ring-1 ring-navy-100">
+          <SearchBar />
+        </div>
+      </div>
+
+      <p className="mt-10 font-display text-xl font-semibold text-ink max-w-2xl">
+        Already listed or just added yours? Go Premium to stand out.
+      </p>
 
       {/* Two pricing cards side by side */}
       <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">

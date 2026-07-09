@@ -24,7 +24,7 @@ export const INDIVIDUAL_PLAN: Plan = {
   id: "individual",
   name: "Individual Premium",
   priceMonthly: 0, // annual-only, no monthly option
-  priceAnnual: 45,
+  priceAnnual: 29.95,
   tagline: "Everything you need to get found, for less than a single session.",
   appliesTo: "Therapists, Psychologists & Psychiatrists",
   stripePaymentLink: "https://buy.stripe.com/6oU5kE1HPebLgZy6dH67S02",
@@ -55,7 +55,7 @@ export const FACILITY_PLAN: Plan = {
   id: "facility",
   name: "Facility Premium",
   priceMonthly: 15,
-  priceAnnual: 149,
+  priceAnnual: 129.95,
   tagline: "Get found first by families and referral partners searching in your category.",
   appliesTo: "All facility & institutional categories",
   stripePaymentLink: "https://buy.stripe.com/dRmbJ2gCJgjT10AgSl67S01",

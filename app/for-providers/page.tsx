@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldCheck, Star } from "lucide-react";
+import { ShieldCheck, Star, Globe, TrendingUp, Image as ImageIcon, Settings } from "lucide-react";
 import { INDIVIDUAL_PLAN, FACILITY_PLAN } from "@/lib/pricing";
 import { PROVIDER_FAQS } from "@/lib/faq";
 import FaqSection from "@/components/FaqSection";
@@ -42,22 +42,43 @@ export default function ForProvidersPage() {
           For Providers
         </p>
         <h1 className="font-display text-4xl font-semibold text-ink leading-tight">
-          Get found by people who need you
+          The free directory for therapists and care facilities
         </h1>
         <p className="mt-4 text-ink/70">
-          Every profile starts free — business name, address, phone number,
-          and category, visible right away. Claim it to keep it accurate, or
-          upgrade to Premium to unlock the rest of your profile and get
-          found first. Pricing depends on the kind of profile you run.
+          Search to see if you're already listed, then claim or add your
+          profile — free, in minutes. Therapists, treatment centers, senior
+          living, home care, and more. Want to stand out? Go Premium
+          anytime.
         </p>
+      </div>
+
+      {/* Premium benefits strip — what upgrading actually gets you */}
+      <div className="mt-8 flex flex-wrap gap-3 max-w-3xl">
+        <div className="flex items-center gap-2 rounded-full bg-teal-50 border border-teal-200 px-4 py-2 text-sm font-medium text-teal-800">
+          <Globe className="h-4 w-4 text-teal-600" aria-hidden="true" />
+          Add your website
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-orange-50 border border-orange-200 px-4 py-2 text-sm font-medium text-orange-800">
+          <TrendingUp className="h-4 w-4 text-orange-600" aria-hidden="true" />
+          Get boosted in Google
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-navy-50 border border-navy-200 px-4 py-2 text-sm font-medium text-navy-800">
+          <ImageIcon className="h-4 w-4 text-navy-600" aria-hidden="true" />
+          Add photos
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-teal-50 border border-teal-200 px-4 py-2 text-sm font-medium text-teal-800">
+          <Settings className="h-4 w-4 text-teal-600" aria-hidden="true" />
+          Manage your listing anytime
+        </div>
       </div>
 
       {/* Two pricing cards side by side */}
       <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2">
         {/* Individual practitioners */}
-        <div className="flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-ink p-8">
+        <div className="relative overflow-hidden flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-8">
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-orange-400 to-orange-500" />
           <div>
-            <p className="font-body text-sm font-semibold uppercase tracking-widest text-navy-200 mb-2">
+            <p className="font-body text-sm font-semibold uppercase tracking-widest text-orange-300 mb-2">
               Individual Providers
             </p>
             <p className="text-sm text-white/50 mb-3">{INDIVIDUAL_PLAN.appliesTo}</p>
@@ -73,7 +94,7 @@ export default function ForProvidersPage() {
               className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
             >
               <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-              Claim free profile
+              Add or claim free profile
             </Link>
             <a
               href={INDIVIDUAL_PLAN.stripePaymentLink}
@@ -88,7 +109,8 @@ export default function ForProvidersPage() {
         </div>
 
         {/* Facilities & institutions */}
-        <div className="flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-ink p-8">
+        <div className="relative overflow-hidden flex flex-col justify-between gap-6 rounded-2xl border border-navy-200 bg-gradient-to-br from-teal-900 via-navy-900 to-navy-900 p-8">
+          <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-teal-300 to-teal-400" />
           <div>
             <p className="font-body text-sm font-semibold uppercase tracking-widest text-teal-300 mb-2">
               Facilities & Institutions
@@ -106,7 +128,7 @@ export default function ForProvidersPage() {
               className="inline-flex items-center gap-2 rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
             >
               <ShieldCheck className="h-4 w-4" aria-hidden="true" />
-              Claim free profile
+              Add or claim free profile
             </Link>
             <a
               href={FACILITY_PLAN.stripePaymentLink}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PlusCircle, Search, ChevronLeft, ChevronRight } from "lucide-react";
 import ProviderCard from "@/components/ProviderCard";
 import { searchProviders } from "@/lib/data/providers";
-import { US_STATES } from "@/lib/us-states";
+import { US_STATES, ACTIVE_STATE_SLUGS } from "@/lib/us-states";
 import { CATEGORIES, getCategoryBySlug } from "@/lib/types";
 
 export const metadata = {
@@ -47,7 +47,7 @@ export default async function BrowsePage({
             <input type="hidden" name="category" value={categorySlug} />
             <select
               name="state"
-              defaultValue=""
+              defaultValue="california"
               className="rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink focus:outline-none focus:border-navy-400 sm:w-40"
             >
               <option value="">Choose a state</option>
@@ -89,7 +89,7 @@ export default async function BrowsePage({
           <form action="/browse" className="flex flex-col gap-2 sm:flex-row">
             <select
               name="state"
-              defaultValue=""
+              defaultValue="california"
               className="rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink focus:outline-none focus:border-navy-400 sm:w-40"
             >
               <option value="">All states</option>
@@ -154,11 +154,46 @@ export default async function BrowsePage({
       <h1 className="font-display text-3xl font-semibold text-ink mb-2">
         {heading}
       </h1>
-      <p className="text-ink/60 mb-8">
+      <p className="text-ink/60 mb-6">
         {totalCount} {totalCount === 1 ? "provider" : "providers"} found
       </p>
 
-      {results.length === 0 ? (
+      <form action="/browse" className="mb-8 rounded-2xl bg-navy-50/60 p-3 shadow-lg shadow-navy-900/5 ring-1 ring-navy-100 flex flex-col gap-2 sm:flex-row">
+        {categorySlug && <input type="hidden" name="category" value={categorySlug} />}
+        {stateSlug && <input type="hidden" name="state" value={stateSlug} />}
+        <input
+          type="text"
+          name="q"
+          defaultValue={q}
+          placeholder="Search by name, city, or zip code"
+          className="flex-1 rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/40 focus:outline-none focus:border-navy-400"
+        />
+        <button
+          type="submit"
+          className="rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600"
+        >
+          Search
+        </button>
+      </form>
+
+      {results.length === 0 && stateSlug && !ACTIVE_STATE_SLUGS.includes(stateSlug) ? (
+        <div className="rounded-2xl border border-line bg-mist p-10 text-center">
+          <p className="text-ink/70 mb-2 font-semibold">
+            We're not in {stateName} yet
+          </p>
+          <p className="text-ink/60 mb-4">
+            We're currently focused on building out California, with more
+            states coming soon. In the meantime, take a look at what we
+            have there.
+          </p>
+          <Link
+            href={buildUrl({ state: "california", page: undefined })}
+            className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-5 py-3 text-sm font-semibold text-white hover:bg-orange-600"
+          >
+            Browse California providers
+          </Link>
+        </div>
+      ) : results.length === 0 ? (
         <div className="rounded-2xl border border-line bg-mist p-10 text-center">
           <p className="text-ink/70 mb-2 font-semibold">
             Don't see your practice or facility?

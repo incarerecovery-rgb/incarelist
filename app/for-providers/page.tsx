@@ -43,7 +43,8 @@ export default function ForProvidersPage() {
           For Providers
         </p>
         <h1 className="font-display text-4xl font-semibold text-ink leading-tight">
-          The free directory for therapists and care facilities
+          The free directory for senior care, treatment centers, and
+          recovery facilities
         </h1>
         <p className="mt-4 text-ink/70">
           InCareList is completely free to join. Most California{" "}

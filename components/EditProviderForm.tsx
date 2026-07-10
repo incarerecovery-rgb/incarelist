@@ -77,7 +77,7 @@ export default function EditProviderForm({
           <h2 className="font-display text-lg font-semibold text-ink">Premium details</h2>
           <Field id="website" label="Website" type="text" placeholder="e.g. mybusiness.com" defaultValue={initial.website} />
           <Field id="logoUrl" label="Logo URL" defaultValue={initial.logoUrl} />
-          <Field id="imageUrl" label="Cover photo URL" defaultValue={initial.imageUrl} />
+          <Field id="imageUrl" label="Cover photo URL" defaultValue={initial.imageUrl ?? ""} />
           <Field id="hoursOfOperation" label="Hours of operation" defaultValue={initial.hoursOfOperation} placeholder="e.g. Mon–Fri 9am–5pm" />
           <Field
             id="contactEmail"
@@ -136,7 +136,7 @@ export default function EditProviderForm({
           </div>
           {/* Hidden fields preserve existing values on save, in case they were set before a downgrade */}
           <input type="hidden" name="website" value={initial.website} />
-          <input type="hidden" name="imageUrl" value={initial.imageUrl} />
+          <input type="hidden" name="imageUrl" value={initial.imageUrl ?? ""} />
           <input type="hidden" name="logoUrl" value={initial.logoUrl} />
           <input type="hidden" name="description" value={initial.description} />
           <input type="hidden" name="hoursOfOperation" value={initial.hoursOfOperation} />

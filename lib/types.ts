@@ -80,7 +80,7 @@ export interface Provider {
   featured: boolean;
   claimed: boolean;
   isPremium: boolean;
-  imageUrl: string;
+  imageUrl: string | null;
   logoUrl?: string;
   galleryUrls?: string[];
   lat?: number;

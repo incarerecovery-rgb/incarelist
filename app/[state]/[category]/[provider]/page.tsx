@@ -37,7 +37,7 @@ export async function generateMetadata({
     openGraph: {
       title,
       description,
-      images: [provider.imageUrl],
+      images: provider.imageUrl ? [provider.imageUrl] : undefined,
     },
   };
 }
@@ -56,7 +56,7 @@ export default async function ProviderPage({
     "@type": "LocalBusiness",
     name: provider.name,
     description: provider.description,
-    image: provider.imageUrl,
+    ...(provider.imageUrl ? { image: provider.imageUrl } : {}),
     telephone: provider.phone,
     url: provider.website,
     address: {
@@ -76,16 +76,18 @@ export default async function ProviderPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="relative h-64 w-full sm:h-80">
-        <Image
-          src={provider.imageUrl}
-          alt=""
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
-      </div>
+      {provider.imageUrl && (
+        <div className="relative h-64 w-full sm:h-80">
+          <Image
+            src={provider.imageUrl}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+        </div>
+      )}
 
       <div className="container-page">
         <nav aria-label="Breadcrumb" className="py-4 text-sm text-ink/60">

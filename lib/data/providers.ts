@@ -17,9 +17,6 @@ import { Provider, InsuranceType, StateSummary, CategorySummary } from "@/lib/ty
 // exactly one category, so this is a flatter join than a multi-category
 // facility model — one lookup for state name, one for category name.
 
-const FALLBACK_IMAGE =
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80";
-
 interface Lookups {
   statesById: Map<string, { name: string; slug: string }>;
   categoriesById: Map<string, { name: string; slug: string }>;
@@ -73,7 +70,7 @@ function mapRow(row: any, lookups: Lookups): Provider {
     featured: row.featured,
     claimed: row.claimed,
     isPremium,
-    imageUrl: isPremium ? (row.image_url ?? FALLBACK_IMAGE) : FALLBACK_IMAGE,
+    imageUrl: isPremium ? (row.image_url ?? null) : null,
     logoUrl: isPremium ? (row.logo_url ?? undefined) : undefined,
     galleryUrls: isPremium ? (row.gallery_urls ?? undefined) : undefined,
     lat: row.lat ?? undefined,
